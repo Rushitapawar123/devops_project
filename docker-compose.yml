@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    container_name: webserver
+    ports:
+      - "8080:80"
+    volumes:
+      - ./website:/usr/share/nginx/html
+      - nginx-logs:/var/log/nginx
+    environment:
+      - TZ=Asia/Kolkata
+    restart: unless-stopped
+
+volumes:
+  nginx-logs:
